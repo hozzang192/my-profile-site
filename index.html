@@ -34,16 +34,290 @@
       background-image: radial-gradient(circle at 80% 20%, rgba(201,168,76,0.15) 0%, transparent 50%),
                         radial-gradient(circle at 10% 80%, rgba(201,168,76,0.1) 0%, transparent 40%);
     }
+    .service-card { border-top: 3px solid transparent; transition: border-top-color 0.3s, box-shadow 0.3s; }
     .service-card:hover { border-top-color: #C9A84C; box-shadow: 0 8px 30px rgba(27,42,74,0.12); }
-    .nav-scrolled { background: rgba(27,42,74,0.95); backdrop-filter: blur(8px); }
+    .nav-scrolled { background: rgba(27,42,74,0.95) !important; backdrop-filter: blur(8px); }
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 19px;
+      top: 40px;
+      bottom: -16px;
+      width: 2px;
+      background: linear-gradient(to bottom, #C9A84C, rgba(201,168,76,0.2));
+    }
   </style>
 </head>
 <body class="font-sans text-gray-800 bg-white">
 
-  <!-- 섹션들이 여기에 추가됨 -->
+  <!-- 네비게이션 바 -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-navy transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#home" class="text-xl font-black text-white tracking-tight">
+        호짱쌤 <span class="text-gold text-sm font-medium">컨설턴트</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#services" class="text-gray-300 hover:text-gold transition-colors text-sm font-medium">서비스</a>
+        <a href="#career" class="text-gray-300 hover:text-gold transition-colors text-sm font-medium">경력</a>
+        <a href="#contact" class="text-gray-300 hover:text-gold transition-colors text-sm font-medium">연락처</a>
+        <a href="#contact" class="bg-gold hover:bg-gold-light text-navy font-bold text-sm px-5 py-2 rounded transition-colors">
+          상담 신청
+        </a>
+      </div>
+      <!-- 모바일 메뉴 버튼 -->
+      <button id="menu-btn" class="md:hidden text-white focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- 모바일 메뉴 -->
+    <div id="mobile-menu" class="hidden md:hidden bg-navy-dark px-6 pb-4">
+      <a href="#services" class="block py-2 text-gray-300 hover:text-gold text-sm font-medium mobile-link">서비스</a>
+      <a href="#career" class="block py-2 text-gray-300 hover:text-gold text-sm font-medium mobile-link">경력</a>
+      <a href="#contact" class="block py-2 text-gray-300 hover:text-gold text-sm font-medium mobile-link">연락처</a>
+      <a href="#contact" class="block mt-2 text-center bg-gold hover:bg-gold-light text-navy font-bold text-sm px-5 py-2 rounded transition-colors mobile-link">상담 신청</a>
+    </div>
+  </nav>
+
+  <!-- 히어로 섹션 -->
+  <section id="home" class="bg-navy hero-pattern min-h-screen flex items-center pt-16">
+    <div class="max-w-6xl mx-auto px-6 py-24">
+      <div class="max-w-2xl">
+        <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-4 fade-in">금융정책자금 전문 컨설턴트</p>
+        <h1 class="text-5xl md:text-6xl font-black text-white leading-tight mb-6 fade-in">
+          호짱쌤<br/>
+          <span class="text-gold">정책자금</span><br/>
+          <span class="text-3xl md:text-4xl font-bold text-gray-300">컨설팅</span>
+        </h1>
+        <p class="text-gray-300 text-lg leading-relaxed mb-8 fade-in">
+          27년의 현장 경험으로 경남 소상공인과 중소기업의<br class="hidden md:block"/>
+          정책자금 매칭부터 기업인증까지 맞춤형 솔루션을 제공합니다.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 fade-in">
+          <a href="#contact" class="bg-gold hover:bg-gold-light text-navy font-bold px-8 py-4 rounded text-center transition-colors">
+            무료 상담 신청
+          </a>
+          <a href="#services" class="border border-gold text-gold hover:bg-gold hover:text-navy font-bold px-8 py-4 rounded text-center transition-colors">
+            서비스 보기
+          </a>
+        </div>
+        <div class="mt-16 flex gap-12 fade-in">
+          <div>
+            <p class="text-3xl font-black text-gold">27<span class="text-xl">년</span></p>
+            <p class="text-gray-400 text-sm mt-1">현장 경력</p>
+          </div>
+          <div>
+            <p class="text-3xl font-black text-gold">1,000<span class="text-xl">+</span></p>
+            <p class="text-gray-400 text-sm mt-1">컨설팅 실적</p>
+          </div>
+          <div>
+            <p class="text-3xl font-black text-gold">98<span class="text-xl">%</span></p>
+            <p class="text-gray-400 text-sm mt-1">고객 만족도</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 서비스 섹션 -->
+  <section id="services" class="py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">SERVICES</p>
+        <h2 class="text-3xl md:text-4xl font-black text-navy mb-4">전문 컨설팅 서비스</h2>
+        <p class="text-gray-500 max-w-xl mx-auto">정책자금 전 과정을 밀착 지원합니다</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- 카드 1: 정책자금 매칭 -->
+        <div class="service-card bg-white rounded-xl p-8 fade-in">
+          <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-3">정책자금 매칭</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">기업 현황에 최적화된 정책자금을 발굴하고 성공적인 자금 확보까지 전 과정을 지원합니다.</p>
+        </div>
+
+        <!-- 카드 2: 재무분석 -->
+        <div class="service-card bg-white rounded-xl p-8 fade-in">
+          <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-3">재무분석</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">기업 재무 현황을 심층 분석하여 자금 조달 가능성을 진단하고 개선 방향을 제시합니다.</p>
+        </div>
+
+        <!-- 카드 3: 기업인증 -->
+        <div class="service-card bg-white rounded-xl p-8 fade-in">
+          <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-3">기업인증</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">벤처기업, 이노비즈, 메인비즈 등 각종 기업인증 취득을 위한 체계적인 준비와 지원을 제공합니다.</p>
+        </div>
+
+        <!-- 카드 4: 정부지원금 -->
+        <div class="service-card bg-white rounded-xl p-8 fade-in">
+          <div class="w-12 h-12 bg-navy rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-navy mb-3">정부지원금</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">소상공인·중소기업 대상 정부 지원금 및 보조금 정보를 제공하고 신청부터 수령까지 밀착 지원합니다.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 경력 섹션 -->
+  <section id="career" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">CAREER</p>
+        <h2 class="text-3xl md:text-4xl font-black text-navy mb-4">27년 경력 타임라인</h2>
+        <p class="text-gray-500 max-w-xl mx-auto">금융·정책자금 분야에서 쌓아온 전문성의 발자취</p>
+      </div>
+      <div class="max-w-2xl mx-auto">
+
+        <div class="relative timeline-item pl-14 pb-10 fade-in">
+          <div class="absolute left-0 top-0 w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+            <span class="text-navy font-black text-xs">현재</span>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <p class="text-gold text-xs font-semibold tracking-wide mb-1">2020 — 현재</p>
+            <h3 class="text-navy font-bold text-lg mb-1">독립 금융정책자금 컨설턴트</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">경남 지역 소상공인·중소기업 전담 정책자금 매칭 및 기업인증 컨설팅. 연간 다수 기업 자금 조달 성공.</p>
+          </div>
+        </div>
+
+        <div class="relative timeline-item pl-14 pb-10 fade-in">
+          <div class="absolute left-0 top-0 w-10 h-10 bg-navy rounded-full flex items-center justify-center">
+            <span class="text-gold font-black text-xs">10년</span>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <p class="text-gold text-xs font-semibold tracking-wide mb-1">2010 — 2020</p>
+            <h3 class="text-navy font-bold text-lg mb-1">중소기업 금융지원 전문기관 근무</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">중소기업진흥공단·기술보증기금 연계 정책자금 상담 및 심사 지원. 재무분석 및 기업진단 역량 강화.</p>
+          </div>
+        </div>
+
+        <div class="relative timeline-item pl-14 pb-10 fade-in">
+          <div class="absolute left-0 top-0 w-10 h-10 bg-navy rounded-full flex items-center justify-center">
+            <span class="text-gold font-black text-xs">7년</span>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <p class="text-gold text-xs font-semibold tracking-wide mb-1">2003 — 2010</p>
+            <h3 class="text-navy font-bold text-lg mb-1">지역 금융기관 기업금융 담당</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">기업대출 심사 및 기업금융 업무 담당. 수백 개 기업의 재무 현황 분석 및 자금조달 전략 수립 경험 축적.</p>
+          </div>
+        </div>
+
+        <div class="relative timeline-item pl-14 fade-in">
+          <div class="absolute left-0 top-0 w-10 h-10 bg-navy rounded-full flex items-center justify-center">
+            <span class="text-gold font-black text-xs">시작</span>
+          </div>
+          <div class="bg-gray-50 rounded-xl p-6">
+            <p class="text-gold text-xs font-semibold tracking-wide mb-1">1997 — 2003</p>
+            <h3 class="text-navy font-bold text-lg mb-1">금융업계 입문</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">경남 지역 금융기관에서 커리어 시작. 기업금융의 기초를 다지며 정책자금 전문가로의 기반 마련.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락처 섹션 -->
+  <section id="contact" class="py-24 bg-navy hero-pattern">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-16 fade-in">
+        <p class="text-gold text-sm font-semibold tracking-widest uppercase mb-3">CONTACT</p>
+        <h2 class="text-3xl md:text-4xl font-black text-white mb-4">지금 바로 상담하세요</h2>
+        <p class="text-gray-400 max-w-xl mx-auto">정책자금 궁금한 점이 있다면 언제든 문의해 주세요.<br/>빠르고 정확한 답변을 드립니다.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+
+        <!-- 이메일 -->
+        <div class="bg-white/10 backdrop-blur rounded-xl p-8 text-center fade-in">
+          <div class="w-14 h-14 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-white font-bold text-lg mb-2">이메일 문의</h3>
+          <p class="text-gray-400 text-sm mb-4">언제든지 이메일로 문의하세요</p>
+          <a href="mailto:hozzang192@gmail.com" class="text-gold font-semibold hover:text-gold-light transition-colors">
+            hozzang192@gmail.com
+          </a>
+        </div>
+
+        <!-- 상담 신청 -->
+        <div class="bg-gold rounded-xl p-8 text-center fade-in">
+          <div class="w-14 h-14 bg-navy rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-7 h-7 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+          </div>
+          <h3 class="text-navy font-bold text-lg mb-2">무료 상담 신청</h3>
+          <p class="text-navy/70 text-sm mb-6">정책자금 적합 여부를<br/>무료로 진단해 드립니다</p>
+          <a href="mailto:hozzang192@gmail.com?subject=정책자금 무료 상담 신청&body=안녕하세요. 정책자금 상담을 신청합니다.%0A%0A회사명:%0A담당자:%0A연락처:%0A문의내용:" class="block bg-navy hover:bg-navy-dark text-white font-bold px-6 py-3 rounded transition-colors">
+            상담 신청하기
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer class="bg-navy-dark py-10">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-white font-black text-xl mb-1">호짱쌤</p>
+      <p class="text-gray-500 text-sm mb-4">금융정책자금 컨설턴트 | 경남 소상공인·중소기업 전문</p>
+      <p class="text-gray-600 text-xs">&copy; 2024 호짱쌤 컨설팅. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script>
-    // JavaScript는 Task 7에서 추가
+    // 스크롤 시 네비게이션 배경 처리
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('nav-scrolled');
+      } else {
+        navbar.classList.remove('nav-scrolled');
+      }
+    });
+
+    // 모바일 메뉴 토글
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+
+    // 스크롤 애니메이션 (fade-in)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
